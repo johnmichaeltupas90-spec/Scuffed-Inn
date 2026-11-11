@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scuffed Inn Hotel: ten rooms across three floors, from ₱1,100 a night. Check dates and book a room.">
+    <title>Scuffed Inn Hotel: ten rooms, three floors</title>
+
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-home">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-users" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </symbol>
+    </svg>
+
+    <header class="masthead">
+        <div class="container masthead__inner">
+            <a class="wordmark" href="index.html">Scuffed Inn <span>Hotel</span></a>
+            <nav class="nav" aria-label="Pages">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="rooms.html">Rooms</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="admin.html">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="container hero__grid">
+                <div class="hero__text settle">
+                    <h1>Ten rooms, three floors.</h1>
+                    <p class="lead">Single, double and suite rooms from ₱1,100 a night.</p>
+                    <p class="hero__action">
+                        <a class="btn" href="rooms.html">See the rooms</a>
+                    </p>
+                </div>
+
+                <figure class="hero__figure mat">
+                    <div class="mat__plate">
+                        <img
+                            src="images/hotel-lobby.png"
+                            width="1536"
+                            height="932"
+                            alt="Scuffed Inn lobby at night, lit by warm ceiling lights"
+                            fetchpriority="high"
+                        >
+                    </div>
+                    <figcaption>The lobby at night.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" id="rates" aria-labelledby="rates-title">
+            <div class="container">
+                <div class="rates__head">
+                    <h2 id="rates-title">Rooms and rates</h2>
+                    <p class="meta">Five room types. Rates are per room, per night.</p>
+                </div>
+
+                <table class="table rates__table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Room</th>
+                            <th scope="col">Sleeps</th>
+                            <th scope="col">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="rates__name">Single King Bed</th>
+                            <td class="rates__sleeps">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>2 guests
+                            </td>
+                            <td class="rates__rate">₱1,200</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="rates__name">Single Queen Bed</th>
+                            <td class="rates__sleeps">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>2 guests
+                            </td>
+                            <td class="rates__rate">₱1,100</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="rates__name">Double King Bed</th>
+                            <td class="rates__sleeps">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                            </td>
+                            <td class="rates__rate">₱1,800</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="rates__name">Double Queen Bed</th>
+                            <td class="rates__sleeps">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                            </td>
+                            <td class="rates__rate">₱1,600</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="rates__name">Suite King Bed</th>
+                            <td class="rates__sleeps">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                            </td>
+                            <td class="rates__rate">₱3,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section section--s how" id="how" aria-labelledby="how-title">
+            <div class="container how__grid">
+                <div class="how__head">
+                    <h2 id="how-title">Booking a room</h2>
+                    <p class="meta">The list only shows rooms that are free for your dates.</p>
+                </div>
+
+                <ol class="steps">
+                    <li class="step">
+                        <h3>Pick your dates</h3>
+                        <p>Check-in and check-out come first. Every room is checked against them.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Choose a free room</h3>
+                        <p>Only rooms open for those nights appear in the list, with their rate.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Keep the number</h3>
+                        <p>The confirmation carries a reservation number for check-in.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="band close">
+            <div class="container close__inner">
+                <p class="close__line">See what is free for your dates.</p>
+                <a class="btn" href="reservation.html">Book a room</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container colophon">
+        <span>Scuffed Inn Hotel</span>
+        <span>Rates in Philippine pesos, per room, per night.</span>
+    </footer>
+</body>
+</html>

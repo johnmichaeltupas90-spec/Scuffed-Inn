@@ -1,0 +1,100 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: create venv and install packages",
+      "type": "shell",
+      "command": "bash \"${workspaceFolder}/.vscode/setup.sh\"",
+      "windows": {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}\\.vscode\\setup.ps1\""
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "API: Flask (:5000)",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" ScuffedInnBE.py",
+      "windows": {
+        "command": "\"${workspaceFolder}\\.venv\\Scripts\\python.exe\" ScuffedInnBE.py"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Web: static server (:8000)",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" -m http.server 8000",
+      "windows": {
+        "command": "\"${workspaceFolder}\\.venv\\Scripts\\python.exe\" -m http.server 8000"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/webui"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Open website (:8000)",
+      "type": "shell",
+      "command": "xdg-open http://localhost:8000/index.html",
+      "windows": {
+        "command": "powershell -NoProfile -Command \"Start-Process 'http://localhost:8000/index.html'\""
+      },
+      "osx": {
+        "command": "open http://localhost:8000/index.html"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Start both servers",
+      "dependsOn": [
+        "API: Flask (:5000)",
+        "Web: static server (:8000)"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Run Everything (API + Web)",
+      "dependsOn": [
+        "Setup: create venv and install packages",
+        "Start both servers"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}

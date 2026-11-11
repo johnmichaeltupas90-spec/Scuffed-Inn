@@ -1,0 +1,392 @@
+/* Hallmark · index and rooms. The system is tokens.css and base.css. */
+
+/* ---------- Home ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--nav-h));
+  padding-block: var(--space-2xl);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.hero__text > * + * {
+  margin-top: var(--space-lg);
+}
+
+.hero__action {
+  margin-top: var(--space-xl);
+}
+
+.hero__figure img {
+  aspect-ratio: 5 / 4;
+}
+
+.rates__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.rates__table tbody th {
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: var(--serif-small);
+  letter-spacing: 0;
+  color: var(--color-ink);
+  text-align: left;
+  white-space: normal;
+}
+
+.rates__sleeps {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.rates__sleeps .icon {
+  margin-right: var(--space-xs);
+}
+
+.rates__rate {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: var(--serif-small);
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.how__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.how__head h2 {
+  max-width: 12ch;
+}
+
+.how__head .meta {
+  display: block;
+  margin-top: var(--space-md);
+  max-width: 28ch;
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  border-top: 1px solid var(--color-ink);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-rule);
+  counter-increment: step;
+}
+
+.step::before {
+  content: counter(step);
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: var(--display-weight);
+  line-height: 0.9;
+  color: var(--color-pencil);
+  font-variant-numeric: tabular-nums;
+}
+
+.step h3,
+.step p {
+  grid-column: 2;
+}
+
+.step h3 {
+  font-size: 1.25rem;
+}
+
+.step p {
+  margin-top: var(--space-xs);
+  max-width: 46ch;
+}
+
+.close {
+  padding-block: var(--section-gap-s);
+}
+
+.close__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+.close__line {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: var(--text-display-s);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.02;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+/* ---------- Rooms ---------- */
+
+.rooms-head {
+  padding-block: var(--space-4xl) var(--space-2xl);
+}
+
+.rooms-head h1 {
+  max-width: 14ch;
+}
+
+.rooms-head .lead {
+  margin-top: var(--space-lg);
+}
+
+.category,
+.suite {
+  padding-block: var(--section-gap-s);
+  border-top: 1px solid var(--color-rule);
+}
+
+.category__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.category__plate {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+
+.category__body {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.category--mirror .category__plate {
+  grid-column: 2;
+}
+
+.category--mirror .category__body {
+  grid-column: 1;
+}
+
+.category__plate img {
+  aspect-ratio: 4 / 3;
+  max-height: 460px;
+}
+
+.category__body h2 {
+  max-width: 12ch;
+}
+
+.rates {
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--color-ink);
+}
+
+.rate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 48px;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-rule);
+  color: var(--color-ink);
+}
+
+.rate:hover .rate__name {
+  color: var(--color-accent);
+}
+
+.rate__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: var(--serif-small);
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.rate__desc {
+  display: block;
+  margin-top: var(--space-2xs);
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.rate__meta {
+  display: block;
+  margin-top: var(--space-3xs);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.rate__meta .icon {
+  margin-right: var(--space-xs);
+}
+
+.rate__price {
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: var(--serif-small);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.rate__book {
+  justify-self: end;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+}
+
+.rate:hover .rate__book {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.suite__plate {
+  margin: var(--space-xl) 0 0;
+}
+
+.suite__plate img {
+  aspect-ratio: 13 / 5;
+}
+
+.suite__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: var(--space-3xl);
+  align-items: start;
+  margin-top: var(--space-xl);
+}
+
+.suite__foot .rates {
+  margin-top: 0;
+}
+
+@media (max-width: 60rem) {
+  .hero {
+    min-height: 0;
+    padding-block: var(--space-3xl) var(--space-2xl);
+  }
+
+  .hero__grid,
+  .how__grid,
+  .category__grid,
+  .suite__foot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .category__plate,
+  .category__body,
+  .category--mirror .category__plate,
+  .category--mirror .category__body {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .step {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: var(--space-md);
+  }
+
+  .step::before {
+    font-size: 1.75rem;
+  }
+
+  .rate {
+    grid-template-columns: minmax(0, 1fr) auto 40px;
+  }
+
+  .rate__book {
+    grid-column: 3;
+  }
+
+  .rate__price {
+    grid-column: 2;
+  }
+
+  .close__line {
+    font-size: var(--text-display-s);
+  }
+}
+
+@media (max-width: 40rem) {
+  .rooms-head {
+    padding-block: var(--space-2xl) var(--space-lg);
+  }
+
+  .category,
+  .suite {
+    padding-block: var(--space-2xl);
+  }
+
+  .rate {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name price"
+      "desc desc"
+      "meta book";
+    row-gap: var(--space-2xs);
+  }
+
+  .rate > span:first-child {
+    display: contents;
+  }
+
+  .rate__name {
+    grid-area: name;
+  }
+
+  .rate__desc {
+    grid-area: desc;
+    max-width: none;
+  }
+
+  .rate__meta {
+    grid-area: meta;
+  }
+
+  .rate__price {
+    grid-area: price;
+    justify-self: end;
+  }
+
+  .rate__book {
+    grid-area: book;
+  }
+
+  .rates__table .rates__name {
+    font-size: 1.125rem;
+  }
+}

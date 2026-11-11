@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a room at Scuffed Inn Hotel: choose your dates, pick a free room and confirm. Rates in Philippine pesos.">
+    <title>Book a room at Scuffed Inn Hotel</title>
+
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="reservations.css">
+</head>
+<body class="page-book">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-x" viewBox="0 0 24 24">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </symbol>
+    </svg>
+
+    <header class="masthead">
+        <div class="container masthead__inner">
+            <a class="wordmark" href="index.html">Scuffed Inn <span>Hotel</span></a>
+            <nav class="nav" aria-label="Pages">
+                <a href="index.html">Home</a>
+                <a href="rooms.html">Rooms</a>
+                <a href="reservation.html" aria-current="page">Reservations</a>
+                <a href="admin.html">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <header class="container booking-head">
+            <h1>Book a room</h1>
+            <p class="lead">Dates decide what is free. The total updates as you choose.</p>
+        </header>
+
+        <div class="container">
+            <form id="reservationForm" class="booking card">
+            <section class="room-panel" aria-labelledby="room-title">
+                <h2 id="room-title">The room</h2>
+
+                <div class="field">
+                    <label class="field__label" for="roomType">
+                        Room type <span class="req" aria-hidden="true">*</span>
+                    </label>
+                    <div class="select">
+                        <select id="roomType" required>
+                            <option value="">Select room type</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="roomNumber">
+                        Room number <span class="req" aria-hidden="true">*</span>
+                    </label>
+                    <div class="select">
+                        <select id="roomNumber" required disabled>
+                            <option value="">Select room number</option>
+                        </select>
+                    </div>
+                </div>
+
+                <figure class="room-panel__plate mat">
+                    <div class="mat__plate">
+                        <img
+                            id="roomPreview"
+                            src="images/standard.png"
+                            width="1394"
+                            height="598"
+                            alt="Selected hotel room"
+                        >
+                    </div>
+                </figure>
+
+                <dl class="facts">
+                    <div class="fact">
+                        <dt>Floor</dt>
+                        <dd id="roomFloor">—</dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Max guests</dt>
+                        <dd id="roomCapacity">—</dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Room status</dt>
+                        <dd id="roomStatus">Select a room</dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Price per night</dt>
+                        <dd id="roomPrice">₱0.00</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="form-panel" aria-labelledby="details-title">
+                <h2 id="details-title">Your details</h2>
+
+                <div class="form-grid form-grid--two">
+                    <div class="field">
+                        <label class="field__label" for="fullName">
+                            Full name <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                            maxlength="120"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="contactNumber">
+                            Contact number <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            type="tel"
+                            id="contactNumber"
+                            name="phone"
+                            placeholder="09XXXXXXXXX"
+                            autocomplete="tel"
+                            pattern="09[0-9]{9}"
+                            title="Enter an 11-digit Philippine mobile number starting with 09"
+                            required
+                        >
+                    </div>
+
+                    <div class="field field--wide">
+                        <label class="field__label" for="email">
+                            Email address <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <h2 id="stay-title">Your stay</h2>
+
+                <div class="form-grid form-grid--three">
+                    <div class="field">
+                        <label class="field__label" for="checkIn">
+                            Check-in <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <input type="date" id="checkIn" name="check_in" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="checkOut">
+                            Check-out <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <input type="date" id="checkOut" name="check_out" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="guests">
+                            Guests <span class="req" aria-hidden="true">*</span>
+                        </label>
+                        <div class="select">
+                            <select id="guests" name="guests" required>
+                                <option value="">Select guests</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="payment-title">Payment</h2>
+
+                <div class="payments">
+                    <label class="payment">
+                        <input type="radio" name="payment" value="GCash" required>
+                        <span>GCash</span>
+                    </label>
+
+                    <label class="payment">
+                        <input type="radio" name="payment" value="Maya">
+                        <span>Maya</span>
+                    </label>
+
+                    <label class="payment">
+                        <input type="radio" name="payment" value="Card">
+                        <span>Card</span>
+                    </label>
+                </div>
+
+                <div class="folio">
+                    <p class="folio__line" id="priceBreakdown">
+                        Select a room and booking dates to calculate the total.
+                    </p>
+                    <div class="folio__total">
+                        <span>Total</span>
+                        <strong id="totalAmount">₱0.00</strong>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="rooms.html" class="link">Cancel</a>
+                    <button type="submit" class="btn">Confirm reservation</button>
+                </div>
+
+                <p id="formMessage" class="form-message" role="alert"></p>
+            </section>
+            </form>
+        </div>
+    </main>
+
+    <footer class="container colophon">
+        <span>Scuffed Inn Hotel</span>
+        <span>Rates in Philippine pesos, per room, per night.</span>
+    </footer>
+
+    <div id="confirmationOverlay" class="overlay" hidden>
+        <div
+            class="receipt"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="confirmationTitle"
+        >
+            <button
+                type="button"
+                id="closeConfirmation"
+                class="receipt__close"
+                aria-label="Close confirmation"
+            >
+                <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+            </button>
+
+            <h2 id="confirmationTitle">Reservation summary</h2>
+            <p class="receipt__sub">Please review your booking information below.</p>
+
+            <div class="receipt__body">
+                <div class="receipt-row">
+                    <span>Reservation no.</span>
+                    <strong id="receiptReservationId">—</strong>
+                </div>
+
+                <h3 class="receipt__head">Room information</h3>
+
+                <div class="receipt-room">
+                    <img
+                        id="receiptRoomImage"
+                        src="images/standard.png"
+                        width="700"
+                        height="300"
+                        alt="Reserved room"
+                    >
+                    <div>
+                        <h4 id="receiptRoomType">—</h4>
+                        <p>Room <span id="receiptRoomNumber">—</span></p>
+                        <p id="receiptFloor">—</p>
+                    </div>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Check-in</span>
+                    <strong id="receiptCheckIn">—</strong>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Check-out</span>
+                    <strong id="receiptCheckOut">—</strong>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Number of nights</span>
+                    <strong id="receiptNights">—</strong>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Number of guests</span>
+                    <strong id="receiptGuests">—</strong>
+                </div>
+
+                <h3 class="receipt__head">Guest information</h3>
+
+                <div class="receipt-row">
+                    <span>Full name</span>
+                    <strong id="receiptName">—</strong>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Contact number</span>
+                    <strong id="receiptContact">—</strong>
+                </div>
+
+                <div class="receipt-row">
+                    <span>Email address</span>
+                    <strong id="receiptEmail">—</strong>
+                </div>
+
+                <h3 class="receipt__head">Payment details</h3>
+
+                <div class="receipt-row">
+                    <span>Payment method</span>
+                    <strong id="receiptPayment">—</strong>
+                </div>
+
+                <div class="receipt-total">
+                    <span>Total</span>
+                    <strong id="receiptTotal">₱0.00</strong>
+                </div>
+            </div>
+
+            <p class="demo-notice" id="receiptNotice"></p>
+
+            <div class="receipt__actions">
+                <button type="button" id="printReceipt" class="btn btn--small">Print summary</button>
+                <a href="rooms.html" class="link">Back to rooms</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="reservations.js"></script>
+</body>
+</html>

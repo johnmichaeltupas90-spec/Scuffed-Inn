@@ -1,0 +1,61 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API: Flask (debug)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/ScuffedInnBE.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true,
+      "subProcess": true,
+      "windows": {
+        "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "linux": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      },
+      "osx": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      }
+    },
+    {
+      "name": "Web: static server (debug)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "http.server",
+      "args": [
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}/webui",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "windows": {
+        "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "linux": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      },
+      "osx": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Everything (debug)",
+      "configurations": [
+        "API: Flask (debug)",
+        "Web: static server (debug)"
+      ],
+      "preLaunchTask": "Setup: create venv and install packages",
+      "stopAll": true,
+      "presentation": {
+        "group": "1_run",
+        "order": 1
+      }
+    }
+  ]
+}

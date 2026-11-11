@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scuffed Inn Hotel rooms: single, double and suite rooms across three floors, with rates per room, per night.">
+    <title>Rooms and rates at Scuffed Inn Hotel</title>
+
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-rooms">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-users" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </symbol>
+    </svg>
+
+    <header class="masthead">
+        <div class="container masthead__inner">
+            <a class="wordmark" href="index.html">Scuffed Inn <span>Hotel</span></a>
+            <nav class="nav" aria-label="Pages">
+                <a href="index.html">Home</a>
+                <a href="rooms.html" aria-current="page">Rooms</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="admin.html">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <header class="container rooms-head">
+            <h1>Rooms and rates</h1>
+            <p class="lead">Ten rooms across three floors. Every rate is per room, per night.</p>
+        </header>
+
+        <section class="category" aria-labelledby="single-title">
+            <div class="container category__grid">
+                <figure class="category__plate mat">
+                    <div class="mat__plate">
+                        <img
+                            src="images/standard.png"
+                            width="1394"
+                            height="598"
+                            alt="A single room with a king bed, a lamp and a window"
+                            loading="lazy"
+                        >
+                    </div>
+                </figure>
+
+                <div class="category__body">
+                    <h2 id="single-title">Single rooms</h2>
+
+                    <div class="rates">
+                        <a class="rate" href="reservation.html?type=single-king">
+                            <span>
+                                <span class="rate__name">Single King Bed</span>
+                                <span class="rate__desc">A compact room with a king bed, ideal for a short stay.</span>
+                                <span class="rate__meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>2 guests
+                                </span>
+                            </span>
+                            <span class="rate__price">₱1,200</span>
+                            <span class="rate__book">Book</span>
+                        </a>
+
+                        <a class="rate" href="reservation.html?type=single-queen">
+                            <span>
+                                <span class="rate__name">Single Queen Bed</span>
+                                <span class="rate__desc">A comfortable room with a queen bed for one or two guests.</span>
+                                <span class="rate__meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>2 guests
+                                </span>
+                            </span>
+                            <span class="rate__price">₱1,100</span>
+                            <span class="rate__book">Book</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category category--mirror" aria-labelledby="double-title">
+            <div class="container category__grid">
+                <figure class="category__plate mat">
+                    <div class="mat__plate">
+                        <img
+                            src="images/deluxe.png"
+                            width="1378"
+                            height="616"
+                            alt="A double room with a king bed, a grey headboard and warm lamps"
+                            loading="lazy"
+                        >
+                    </div>
+                </figure>
+
+                <div class="category__body">
+                    <h2 id="double-title">Double rooms</h2>
+
+                    <div class="rates">
+                        <a class="rate" href="reservation.html?type=double-king">
+                            <span>
+                                <span class="rate__name">Double King Bed</span>
+                                <span class="rate__desc">Extra space and two king beds, suited to a family or group.</span>
+                                <span class="rate__meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                                </span>
+                            </span>
+                            <span class="rate__price">₱1,800</span>
+                            <span class="rate__book">Book</span>
+                        </a>
+
+                        <a class="rate" href="reservation.html?type=double-queen">
+                            <span>
+                                <span class="rate__name">Double Queen Bed</span>
+                                <span class="rate__desc">Two queen beds with room to spread out.</span>
+                                <span class="rate__meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                                </span>
+                            </span>
+                            <span class="rate__price">₱1,600</span>
+                            <span class="rate__book">Book</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="suite" aria-labelledby="suite-title">
+            <div class="container">
+                <h2 id="suite-title">The suite</h2>
+
+                <figure class="suite__plate mat">
+                    <div class="mat__plate">
+                        <img
+                            src="images/suite.png"
+                            width="1360"
+                            height="570"
+                            alt="The suite: a king bed, a sofa and a television along one wall"
+                            loading="lazy"
+                        >
+                    </div>
+                    <figcaption>Room for four, with a sitting area.</figcaption>
+                </figure>
+
+                <div class="suite__foot">
+                    <p class="lead">The inn's largest room, with a king bed and space for four.</p>
+
+                    <div class="rates">
+                        <a class="rate" href="reservation.html?type=suite-king">
+                            <span>
+                                <span class="rate__name">Suite King Bed</span>
+                                <span class="rate__meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>4 guests
+                                </span>
+                            </span>
+                            <span class="rate__price">₱3,500</span>
+                            <span class="rate__book">Book</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="band close">
+            <div class="container close__inner">
+                <p class="close__line">Pick a date, then a room number.</p>
+                <a class="btn" href="reservation.html">Book a room</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container colophon">
+        <span>Scuffed Inn Hotel</span>
+        <span>Rates in Philippine pesos, per room, per night.</span>
+    </footer>
+</body>
+</html>

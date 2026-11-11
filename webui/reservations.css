@@ -1,0 +1,472 @@
+/* Hallmark · the booking as a cotton card. The system is tokens.css and base.css. */
+
+.booking-head {
+  padding-block: var(--space-2xl) var(--space-xl);
+}
+
+.booking-head h1 {
+  max-width: 12ch;
+}
+
+.booking-head .lead {
+  margin-top: var(--space-md);
+}
+
+.booking {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-2xl);
+  align-items: start;
+  padding: var(--space-xl);
+  margin-bottom: var(--section-gap);
+}
+
+.booking h2 {
+  font-size: var(--text-title);
+  line-height: 1.2;
+}
+
+/* The room, left */
+
+.room-panel .field {
+  margin-top: var(--space-lg);
+}
+
+.room-panel__plate {
+  margin: var(--space-xl) 0 var(--space-lg);
+}
+
+.room-panel__plate img {
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+}
+
+.facts {
+  margin: 0;
+  border-top: 1px solid var(--color-ink);
+}
+
+.fact {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-rule);
+  font-size: var(--text-sm);
+}
+
+.fact dt {
+  color: var(--color-muted);
+}
+
+.fact dd {
+  margin: 0;
+  color: var(--color-ink);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#roomStatus.available {
+  color: var(--color-accent);
+}
+
+/* The form, right; a rule parts the two columns. */
+
+.form-panel {
+  padding-left: var(--space-xl);
+  border-left: 1px solid var(--color-rule);
+  min-width: 0;
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--space-lg) var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.form-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.form-panel h2:not(:first-child) {
+  margin-top: var(--space-xl);
+}
+
+.payments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 52px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-paper);
+  font-size: var(--text-md);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out),
+    box-shadow var(--dur-short) var(--ease-out);
+}
+
+.payment input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--color-accent);
+}
+
+.payment:hover {
+  background-color: var(--color-paper-2);
+}
+
+.payment:has(input:checked) {
+  background-color: var(--color-card);
+  box-shadow: inset 0 0 0 1px var(--color-ink);
+}
+
+.payment:has(input:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.payment input:focus-visible {
+  outline: none;
+}
+
+/* The total, set as a folio line. */
+
+.folio {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-ink);
+}
+
+.folio__line {
+  max-width: none;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  min-height: 1lh;
+}
+
+.folio__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.folio__total span {
+  font-size: var(--text-md);
+  color: var(--color-ink-2);
+}
+
+.folio__total strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: var(--serif-small);
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.form-message {
+  max-width: none;
+  margin-top: var(--space-md);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--color-accent);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  min-height: 1lh;
+}
+
+.form-message:empty {
+  border-left-color: transparent;
+}
+
+/* The receipt */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: center;
+  padding: var(--space-lg);
+  overflow-y: auto;
+  background-color: var(--color-scrim);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.receipt {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  max-height: 92svh;
+  overflow-y: auto;
+  padding: var(--space-xl);
+  background-color: var(--color-card);
+  background-image: var(--grain),
+    linear-gradient(160deg, var(--card-lit), var(--color-card) 55%, var(--card-shade));
+  background-size: 220px, auto;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.receipt h2 {
+  font-size: var(--text-display-s);
+  max-width: none;
+  padding-right: var(--space-2xl);
+}
+
+.receipt__sub {
+  margin-top: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  max-width: none;
+}
+
+.receipt__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out);
+}
+
+.receipt__close:hover {
+  background-color: var(--color-paper-2);
+}
+
+.receipt__close .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.receipt__body {
+  margin-top: var(--space-lg);
+}
+
+.receipt__head {
+  margin: var(--space-lg) 0 0;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--color-muted);
+}
+
+.receipt-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-rule);
+  font-size: var(--text-sm);
+}
+
+.receipt-row span {
+  color: var(--color-muted);
+}
+
+.receipt-row strong {
+  text-align: right;
+  color: var(--color-ink);
+  font-weight: 400;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt-room {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.receipt-room img {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  flex: none;
+  filter: saturate(0.92) contrast(0.96);
+}
+
+.receipt-room h4 {
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: var(--serif-small);
+  color: var(--color-ink);
+}
+
+.receipt-room p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.receipt-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-ink);
+}
+
+.receipt-total strong {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: var(--serif-small);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.demo-notice {
+  max-width: none;
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+}
+
+.receipt__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+@media (max-width: 64rem) {
+  .booking {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    padding: var(--space-lg);
+    margin-bottom: var(--section-gap-s);
+  }
+
+  .form-panel {
+    padding-left: 0;
+    padding-top: var(--space-xl);
+    border-left: 0;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .booking-head {
+    padding-block: var(--space-2xl) var(--space-xl);
+  }
+}
+
+@media (max-width: 40rem) {
+  .form-grid--two,
+  .form-grid--three,
+  .payments {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .form-actions .link {
+    align-self: flex-start;
+  }
+
+  .receipt {
+    padding: var(--space-lg);
+    max-height: 100svh;
+  }
+
+  .receipt-room {
+    align-items: flex-start;
+  }
+
+  .receipt-room img {
+    width: 110px;
+    height: 76px;
+  }
+
+  .receipt__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+
+  .receipt__actions .link {
+    align-self: flex-start;
+  }
+}
+
+@media print {
+  .masthead,
+  .booking-head,
+  .booking,
+  .colophon,
+  .receipt__close,
+  .receipt__actions,
+  .demo-notice {
+    display: none !important;
+  }
+
+  body {
+    background: var(--color-card);
+  }
+
+  .overlay {
+    position: static;
+    display: block;
+    padding: 0;
+    background: none;
+  }
+
+  .receipt {
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    background: none;
+  }
+}

@@ -1,0 +1,191 @@
+/* Hallmark · the admin screen: one table, no card. The system is tokens.css and base.css. */
+
+.admin-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-lg) var(--space-xl);
+  padding-block: var(--space-3xl) var(--space-xl);
+}
+
+.admin-head h1 {
+  font-size: var(--text-display-s);
+  max-width: none;
+}
+
+.admin-head .lead {
+  margin-top: var(--space-xs);
+  max-width: 34ch;
+}
+
+.admin-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.admin-count {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-main {
+  padding-bottom: var(--section-gap);
+}
+
+.admin-message {
+  max-width: none;
+  min-height: 1lh;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--color-accent);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+}
+
+.admin-message:empty {
+  border-left-color: transparent;
+}
+
+.admin-message.is-success {
+  color: var(--color-accent);
+}
+
+.admin-table-wrap {
+  margin-top: var(--space-md);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--color-rule) var(--color-paper);
+}
+
+.admin-table {
+  min-width: 900px;
+}
+
+.admin-table th {
+  padding-block: var(--space-sm);
+}
+
+.admin-table td {
+  padding-block: var(--space-sm);
+  font-size: var(--text-sm);
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.admin-table td:nth-child(2) {
+  width: 26%;
+  min-width: 200px;
+  white-space: normal;
+}
+
+.admin-table td:nth-child(2) .admin-guest-meta {
+  overflow-wrap: anywhere;
+}
+
+.admin-guest-name {
+  display: block;
+  color: var(--color-ink);
+  font-size: var(--text-md);
+  line-height: 1.35;
+}
+
+.admin-guest-meta {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.admin-table td:nth-child(3) .admin-guest-name {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-table td:nth-child(6) {
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-badge {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-xs);
+  border: 1px solid var(--color-card-edge);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-paper-2);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-ink-2);
+}
+
+.admin-badge.is-pending {
+  color: var(--color-ink);
+}
+
+.admin-badge.is-cancelled {
+  color: var(--color-muted);
+}
+
+.admin-empty {
+  padding-block: var(--space-xl);
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.admin-cancel {
+  position: relative;
+  min-height: 32px;
+  padding: 0 var(--space-sm);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out);
+}
+
+.admin-cancel:hover,
+.admin-cancel:active {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.admin-cancel::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+.admin-cancel:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: transparent;
+  color: var(--color-ink);
+}
+
+@media (max-width: 60rem) {
+  .admin-head {
+    padding-block: var(--space-2xl) var(--space-lg);
+  }
+
+  .admin-head h1 {
+    font-size: var(--text-section);
+  }
+
+  .admin-table th:first-child,
+  .admin-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: var(--z-raised);
+    background-color: var(--color-paper);
+    padding-left: var(--space-xs);
+  }
+
+  .admin-main {
+    padding-bottom: var(--section-gap-s);
+  }
+}
