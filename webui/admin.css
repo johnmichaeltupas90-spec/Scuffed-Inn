@@ -132,7 +132,13 @@
   color: var(--color-muted);
 }
 
-.admin-cancel {
+.admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+}
+
+.admin-action {
   position: relative;
   min-height: 32px;
   padding: 0 var(--space-sm);
@@ -148,19 +154,19 @@
     color var(--dur-short) var(--ease-out);
 }
 
-.admin-cancel:hover,
-.admin-cancel:active {
+.admin-action:hover,
+.admin-action:active {
   background-color: var(--color-ink);
   color: var(--color-paper);
 }
 
-.admin-cancel::after {
+.admin-action::after {
   content: "";
   position: absolute;
   inset: -6px;
 }
 
-.admin-cancel:disabled {
+.admin-action:disabled {
   opacity: 0.55;
   cursor: not-allowed;
   background: transparent;

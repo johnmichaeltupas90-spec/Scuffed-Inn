@@ -389,5 +389,30 @@ def api_cancel_reservation(reservation_id):
     }), 200
 
 
+@app.route("/api/reservations/<int:reservation_id>", methods=["DELETE"])
+def api_delete_reservation(reservation_id):
+    """
+    Deletes a booking permanently. Availability is decided by the stay dates,
+    so deleting frees the room automatically.
+    """
+    with db_cursor() as cursor:
+        cursor.execute("""
+            DELETE FROM reservations
+            WHERE reservation_number = %s
+            RETURNING reservation_number
+        """, (reservation_id,))
+        deleted = cursor.fetchone()
+
+        if deleted is None:
+            raise ApiError(404, "Reservation not found")
+
+    return jsonify({
+        "message": "Reservation deleted",
+        "reservation": {
+            "id": deleted["reservation_number"],
+        }
+    }), 200
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

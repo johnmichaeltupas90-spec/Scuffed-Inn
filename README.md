@@ -10,7 +10,7 @@ There is no build step, no framework, and no npm — just a Python API and a few
 | --- | --- |
 | Browse room types and prices | See every reservation in one table |
 | Check which rooms are free for your dates | See guest details, dates, nights, and payment method |
-| Book a room and get a reservation number | Cancel a reservation |
+| Book a room and get a reservation number | Cancel or delete a reservation |
 | Print or save your booking summary | Refresh the table at any time |
 
 ## Contents
@@ -346,6 +346,7 @@ The admin page is simple:
 1. On load, it calls `GET /api/reservations` and draws a table (status, guest, room, dates, nights, payment).
 2. **Refresh** asks again.
 3. **Cancel** calls the cancel endpoint, then reloads the table.
+4. **Delete** removes the booking from the database, then reloads the table.
 
 There is no login. Anyone who can open the page can cancel a booking. It is meant for local or demo use.
 
@@ -407,6 +408,7 @@ There is **no authentication**. Every endpoint is open.
 | 5 | POST | `/api/reservations` | Creates a booking |
 | 6 | GET | `/api/reservations` | Lists every booking with guest and room details |
 | 7 | POST | `/api/reservations/<id>/cancel` | Cancels a booking |
+| 8 | DELETE | `/api/reservations/<id>` | Deletes a booking permanently |
 
 Errors always look like this:
 
@@ -579,6 +581,21 @@ Every booking, newest stay first. This is what the admin table uses.
 
 Calling it again returns 200 with `"Reservation was already cancelled"`. Unknown id returns 404.
 
+### 8) `DELETE /api/reservations/<id>`
+
+`<id>` is the reservation number. No body needed.
+
+```json
+{
+  "message": "Reservation deleted",
+  "reservation": {
+    "id": 42
+  }
+}
+```
+
+This removes the row from the database. Unlike cancelling, it cannot be undone. Unknown id returns 404.
+
 ---
 
 ## 6. Database
@@ -689,6 +706,7 @@ These are real behaviours that are easy to trip over:
 - **The API address is hardcoded** in `reservations.js` and `admin.js` as `http://127.0.0.1:5000`.
 - **A room picker can go stale.** That is expected — the final check happens on submit, which returns 409 if someone else got there first.
 - **Cancelling frees the dates immediately** because cancelled rows are skipped by the availability query.
+- **Deleting is permanent.** Cancel keeps the booking as `cancelled`; delete removes it from the database for good.
 
 ---
 

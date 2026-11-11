@@ -69,25 +69,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function actionCell(reservation) {
         const td = document.createElement("td");
+        const actions = document.createElement("div");
+        actions.className = "admin-actions";
 
-        if (reservation.status === "cancelled") {
-            td.textContent = "—";
-            return td;
+        if (reservation.status !== "cancelled") {
+            const cancelButton = document.createElement("button");
+            cancelButton.type = "button";
+            cancelButton.className = "admin-action";
+            cancelButton.textContent = "Cancel";
+            cancelButton.setAttribute(
+                "aria-label",
+                `Cancel reservation ${reservation.id}`
+            );
+            cancelButton.addEventListener("click", () =>
+                cancelReservation(reservation.id, cancelButton)
+            );
+            actions.appendChild(cancelButton);
         }
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "admin-cancel";
-        button.textContent = "Cancel";
-        button.setAttribute(
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "admin-action";
+        deleteButton.textContent = "Delete";
+        deleteButton.setAttribute(
             "aria-label",
-            `Cancel reservation ${reservation.id}`
+            `Delete reservation ${reservation.id}`
         );
-        button.addEventListener("click", () =>
-            cancelReservation(reservation.id, button)
+        deleteButton.addEventListener("click", () =>
+            deleteReservation(reservation.id, deleteButton)
         );
+        actions.appendChild(deleteButton);
 
-        td.appendChild(button);
+        td.appendChild(actions);
         return td;
     }
 
@@ -157,6 +170,40 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         } finally {
             refreshButton.disabled = false;
+        }
+    }
+
+    async function deleteReservation(id, button) {
+        if (!window.confirm(
+            `Delete reservation #${id}? This permanently removes it from the database.`
+        )) {
+            return;
+        }
+
+        button.disabled = true;
+        showMessage("");
+
+        try {
+            const response = await fetch(
+                `${API_BASE}/api/reservations/${id}`,
+                { method: "DELETE" }
+            );
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(data.message || `HTTP ${response.status}`);
+            }
+
+            if (await loadReservations()) {
+                showMessage(`Reservation #${id} deleted.`, "success");
+            }
+        } catch (error) {
+            console.error(error);
+            button.disabled = false;
+            showMessage(
+                error.message || "Could not delete the reservation. Please try again."
+            );
         }
     }
 
