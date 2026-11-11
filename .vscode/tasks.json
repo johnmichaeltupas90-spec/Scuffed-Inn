@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "bash \"${workspaceFolder}/.vscode/setup.sh\"",
       "windows": {
-        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}\\.vscode\\setup.ps1\""
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .vscode/setup.ps1"
       },
       "options": {
         "cwd": "${workspaceFolder}"
